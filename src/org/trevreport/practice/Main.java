@@ -2,10 +2,12 @@ package org.trevreport.practice;
 
 import java.util.regex.Pattern;
 
-
 public class Main {
+
 	
 	public static void main(String[] args) {
+		findChars();
+		
 		emailRegex();
 		
 		fizzBuzz();
@@ -17,6 +19,12 @@ public class Main {
 		hasSum();		
 		
 		binaryTreePrinters();
+	}
+
+	private static void findChars() {
+		FindChars findChars = new FindChars("abcde", "the effort of man is a virture hard-earned");
+		
+		System.out.println(findChars.findCharsN() + " == " + findChars.findCharsN2());
 	}
 
 	private static void emailRegex() {
