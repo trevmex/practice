@@ -3,9 +3,10 @@ package org.trevreport.practice;
 import java.util.regex.Pattern;
 
 public class Main {
-
 	
 	public static void main(String[] args) {
+		findLowest();
+		
 		findChars();
 		
 		emailRegex();
@@ -19,6 +20,22 @@ public class Main {
 		hasSum();		
 		
 		binaryTreePrinters();
+	}
+
+	private static void findLowest() {
+		CircularListBuilder<Integer> builder = new CircularListBuilder<Integer>();
+		Integer[] arr = {22, 52, 66, 82, 5, 8, 12, 19};
+		CircularListNode<Integer> list = builder.build(arr),
+								  head = list;
+		int low = list.getValue();
+		
+		while (!list.getNext().equals(head)) {
+			if (list.getValue() < low) {
+				low = list.getValue();
+			}
+			list = list.getNext();
+		}
+		System.out.println("The low is " + low);
 	}
 
 	private static void findChars() {
@@ -54,7 +71,7 @@ public class Main {
 	}
 
 	private static void binaryTreePrinters() {
-		Node<String> tree = new BinaryTreeBuilder().build();
+		BinaryTreeNode<String> tree = new BinaryTreeBuilder().build();
 		BinaryTreePrinter<String> printer = new BinaryTreePrinter<String>(tree);
 		
 		printer.printDepthFirst();

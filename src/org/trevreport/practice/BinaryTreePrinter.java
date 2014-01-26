@@ -6,9 +6,9 @@ import java.util.SortedMap;
 
 public class BinaryTreePrinter<E> {
 
-	private Node<E> tree;
+	private BinaryTreeNode<E> tree;
 	
-	public BinaryTreePrinter(Node<E> tree) {
+	public BinaryTreePrinter(BinaryTreeNode<E> tree) {
 		this.tree = tree;
 	}
 
@@ -18,13 +18,13 @@ public class BinaryTreePrinter<E> {
 	}
 	
 	public void printBreadthFirst() {
-		SortedMap<Integer, List<Node<E>>> map = new TreeMap<Integer, List<Node<E>>>();
+		SortedMap<Integer, List<BinaryTreeNode<E>>> map = new TreeMap<Integer, List<BinaryTreeNode<E>>>();
 		
 		buildBreadthFirstMap(tree, 0, map);
 		printBreadthFirstMap(map);
 	}	
 
-	private void recursePrintDepthFirst(Node<E> n) {
+	private void recursePrintDepthFirst(BinaryTreeNode<E> n) {
 		if (n != null) {
 			System.out.print(n.getKey().toString());
 			recursePrintDepthFirst(n.getLeft());
@@ -32,12 +32,12 @@ public class BinaryTreePrinter<E> {
 		}
 	}
 	
-	private void buildBreadthFirstMap(Node<E> n, int level, SortedMap<Integer, List<Node<E>>> map) {
+	private void buildBreadthFirstMap(BinaryTreeNode<E> n, int level, SortedMap<Integer, List<BinaryTreeNode<E>>> map) {
 		if (n != null) {
-			List<Node<E>> list = map.get(level);
+			List<BinaryTreeNode<E>> list = map.get(level);
 			
 			if (list == null) {
-				list = new LinkedList<Node<E>>();
+				list = new LinkedList<BinaryTreeNode<E>>();
 			}
 			list.add(n);
 			map.put(level, list);
@@ -51,9 +51,9 @@ public class BinaryTreePrinter<E> {
 		}
 	}
 	
-	private void printBreadthFirstMap(SortedMap<Integer, List<Node<E>>> map) {
-		for (List<Node<E>> list : map.values()) {
-			for (Node<E> n : list) {
+	private void printBreadthFirstMap(SortedMap<Integer, List<BinaryTreeNode<E>>> map) {
+		for (List<BinaryTreeNode<E>> list : map.values()) {
+			for (BinaryTreeNode<E> n : list) {
 				System.out.print(n.getKey().toString());
 			}
 			System.out.print("\n");
