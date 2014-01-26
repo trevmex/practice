@@ -1,6 +1,6 @@
 package org.trevreport.practice;
 
-public class CircularListBuilder<E> {
+public class CircularListBuilder<E extends Comparable<? super E>> {
 	
 	public CircularListNode<E> head;
 
